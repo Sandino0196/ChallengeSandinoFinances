@@ -95,10 +95,10 @@
                     url: 'http://localhost:59894/api/Account/Register',
                     method: 'post',
                     data: {
-                        UserName: $('#txtUsername'),
-                        Email: $('#txtEmail'),
-                        Password: $('#txtPassword'),
-                        ConfirmPassword: $('#txtConfirmPassword')
+                        UserName: $('#txtUsername').val(),
+                        Email: $('#txtEmail').val(),
+                        Password: $('#txtPassword').val(),
+                        ConfirmPassword: $('#txtConfirmPassword').val()
                     },
                     success: function () {
                         $('#successModal').modal('show');
