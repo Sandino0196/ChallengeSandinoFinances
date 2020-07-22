@@ -19,7 +19,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
+                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span><p id="pLogin">Login</p></a></li>
                 </ul>
             </div>
         </nav>
@@ -31,5 +31,17 @@
         <hr />
         Copyright Rodrigo Sandino 2020
     </footer>
+
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (localStorage.getItem('accessToken') != null) {
+                document.getElementById("pLogin").textContent = "Logout";                
+            } else {
+                document.getElementById("pLogin").textContent = "Login";
+            }
+        });
+    </script>
 </body>
 </html>
