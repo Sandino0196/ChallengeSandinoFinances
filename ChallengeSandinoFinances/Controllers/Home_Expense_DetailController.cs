@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ChallengeSandinoFinances.Controllers
 {
+    [EnableCorsAttribute("*", "*", "*")]
+    [Authorize]
     public class Home_Expense_DetailController : ApiController
     {
         public Home_Expense_DetailController()

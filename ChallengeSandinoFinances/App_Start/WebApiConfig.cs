@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using Microsoft.Owin.Security.OAuth;
 using System.Web.Http;
-using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
 
 namespace ChallengeSandinoFinances
 {
@@ -25,6 +20,8 @@ namespace ChallengeSandinoFinances
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.EnableCors();
         }
     }
 }

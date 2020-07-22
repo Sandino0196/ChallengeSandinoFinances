@@ -35,6 +35,10 @@ namespace ChallengeSandinoFinances.Models
     public class RegisterBindingModel
     {
         [Required]
+        [Display(Name = "Usuario")]
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
 

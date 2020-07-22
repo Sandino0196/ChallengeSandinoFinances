@@ -7,7 +7,7 @@
 </head>
 <body style="background-color:cadetblue">
     <div class="col-md-10 col-lg-offset-1">
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse text-center">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">Home</a>
@@ -23,10 +23,10 @@
                 </ul>
             </div>
         </nav>
-        <table class="table table-bordered">
+        <table class="table table-bordered well">
             <thead>
                 <tr class="info">
-                    <td>
+                    <td colspan="2" class="text-center h3">
                         New User Registration
                     </td>
                 </tr>
@@ -48,12 +48,68 @@
                     <td>Confirm Password</td>
                     <td><input type="password" id="txtConfirmPassword" placeholder="Confirm Confidential" /></td>
                 </tr>
+                <tr class="success">
+                    <td colspan="2"><input type="button" id="btnRegister" value="Register" class="btn btn-success center-block" style="width:200px"/></td>
+                </tr>
             </tbody>
         </table>
+
+        <div class="modal fade" tabindex="-1" id="successModal" data-keyboard="false"
+             data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header h4">
+                        Success
+                    </div>
+                    <div class="modal-body h1">
+                        Registration Successfull
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="button" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="divError" class="alert alert-danger collapse">
+            <a id="linkClose" class="close" href="#">&times;</a>
+            <div id="divErrorText">
+
+            </div>
+        </div>
     </div>
     <footer class="container" style="padding-top:50%;">
         <hr />
         Copyright Rodrigo Sandino 2020
     </footer>
+
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#linkClose').click(function () {
+                $('#divError').hide('fade');
+            });
+            $('#btnRegister').click(function () {
+                $.ajax({
+                    url: 'http://localhost:59894/api/Account/Register',
+                    method: 'post',
+                    data: {
+                        UserName: $('#txtUsername'),
+                        Email: $('#txtEmail'),
+                        Password: $('#txtPassword'),
+                        ConfirmPassword: $('#txtConfirmPassword')
+                    },
+                    success: function () {
+                        $('#successModal').modal('show');
+                    },
+                    error: function (error) {
+                        $('#divErrorText').text(error.responseText);
+                        $('#divError').show('fade');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

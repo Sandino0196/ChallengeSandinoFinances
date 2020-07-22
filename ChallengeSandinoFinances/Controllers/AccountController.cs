@@ -16,9 +16,11 @@ using Microsoft.Owin.Security.OAuth;
 using ChallengeSandinoFinances.Models;
 using ChallengeSandinoFinances.Providers;
 using ChallengeSandinoFinances.Results;
+using System.Web.Http.Cors;
 
 namespace ChallengeSandinoFinances.Controllers
 {
+    [EnableCorsAttribute("*", "*", "*")]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -328,7 +330,7 @@ namespace ChallengeSandinoFinances.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
