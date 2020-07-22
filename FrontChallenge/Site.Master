@@ -12,7 +12,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
+    
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
@@ -58,6 +58,8 @@
                 </div>
             </div>
         </div>
+        <asp:CheckBox ID="CheckBox1" runat="server" />
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
