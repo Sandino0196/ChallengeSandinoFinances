@@ -9,9 +9,7 @@
 
 namespace ChallengeSandinoFinances.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class Home_Expenses
     {
         public int ID_Home_Expense { get; set; }

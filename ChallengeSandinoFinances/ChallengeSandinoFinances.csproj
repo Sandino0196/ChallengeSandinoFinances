@@ -229,6 +229,7 @@
     <Compile Include="Models\Expense_Detail.cs">
       <DependentUpon>FinancesDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Expense_DetailModel.cs" />
     <Compile Include="Models\FinancesDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
