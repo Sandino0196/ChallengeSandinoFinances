@@ -5,63 +5,63 @@ using System.Web.Http;
 
 namespace ChallengeSandinoFinances.Controllers
 {
-    public class ExpensesController : ApiController
+    public class Home_ExpensesController : ApiController
     {
-        public ExpensesController()
+        public Home_ExpensesController()
         {
 
         }
 
-        // GET: api/Expenses
-        public IEnumerable<Expenses> Get()
+        // GET: api/Home_Expenses
+        public IEnumerable<Home_Expenses> Get()
         {
             using (FinancesChallengeDBEntities entities = new FinancesChallengeDBEntities())
             {
-                return entities.Expenses.ToList();
+                return entities.Home_Expenses.ToList();
             }
         }
 
-        // GET: api/Expenses/5
-        public Expenses Get(int id)
+        // GET: api/Home_Expenses/5
+        public Home_Expenses Get(int id)
         {
             using (FinancesChallengeDBEntities entities = new FinancesChallengeDBEntities())
             {
-                return entities.Expenses.FirstOrDefault(e => e.ID_Expense == id);
+                return entities.Home_Expenses.FirstOrDefault(e => e.ID_Home_Expense == id);
             }
         }
 
-        // POST: api/Expenses
-        public void Post([FromBody]Expenses value)
+        // POST: api/Home_Expenses
+        public void Post([FromBody]Home_Expenses value)
         {
             using (FinancesChallengeDBEntities entities = new FinancesChallengeDBEntities())
             {
-                entities.Expenses.Add(value);
+                entities.Home_Expenses.Add(value);
                 entities.SaveChanges();
             }
         }
 
-        // PUT: api/Expenses/5
-        public void Put(int id, [FromBody]Expenses value)
+        // PUT: api/Home_Expenses/5
+        public void Put(int id, [FromBody]Home_Expenses value)
         {
             using (FinancesChallengeDBEntities entities = new FinancesChallengeDBEntities())
             {
-                if(value.ID_Expense == id)
+                if(value.ID_Home_Expense == id)
                 {
                     entities.Entry(value).State = System.Data.Entity.EntityState.Modified;
                     entities.SaveChanges();
-                }                
+                }
             }
         }
 
-        // DELETE: api/Expenses/5
+        // DELETE: api/Home_Expenses/5
         public void Delete(int id)
         {
             using (FinancesChallengeDBEntities entities = new FinancesChallengeDBEntities())
             {
-                var temp = entities.Expenses.FirstOrDefault(e => e.ID_Expense == id);
-                if (temp.ID_Expense == id)
+                var temp = entities.Home_Expenses.FirstOrDefault(e => e.ID_Home_Expense == id);
+                if (temp.ID_Home_Expense == id)
                 {
-                    entities.Expenses.Remove(temp);
+                    entities.Home_Expenses.Remove(temp);
                     entities.SaveChanges();
                 }
             }

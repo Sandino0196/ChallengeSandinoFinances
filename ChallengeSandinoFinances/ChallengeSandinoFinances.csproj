@@ -210,6 +210,8 @@
     <Compile Include="Controllers\ExpensesController.cs" />
     <Compile Include="Controllers\Expense_DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Home_ExpensesController.cs" />
+    <Compile Include="Controllers\Home_Expense_DetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

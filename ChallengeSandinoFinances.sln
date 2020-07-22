@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1169
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeSandinoFinances", "ChallengeSandinoFinances\ChallengeSandinoFinances.csproj", "{058B2202-DD17-4703-96C3-45AF1BA52CD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontChallenge", "FrontChallenge\FrontChallenge.csproj", "{C95FF406-6AF7-4AE1-9DE5-1ADB627D2EFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{058B2202-DD17-4703-96C3-45AF1BA52CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{058B2202-DD17-4703-96C3-45AF1BA52CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{058B2202-DD17-4703-96C3-45AF1BA52CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C95FF406-6AF7-4AE1-9DE5-1ADB627D2EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C95FF406-6AF7-4AE1-9DE5-1ADB627D2EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C95FF406-6AF7-4AE1-9DE5-1ADB627D2EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C95FF406-6AF7-4AE1-9DE5-1ADB627D2EFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
