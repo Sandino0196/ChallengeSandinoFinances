@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FinancesChallengeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Expense_Detail">
+          <Key>
+            <PropertyRef Name="ID_Expense" />
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_Expense_Detail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Expense" Type="int" Nullable="false" />
+          <Property Name="ID_User" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Spent_Money" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expenses">
+          <Key>
+            <PropertyRef Name="ID_Expense" />
+          </Key>
+          <Property Name="ID_Expense" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description_Expense" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Home_Expense_Detail">
+          <Key>
+            <PropertyRef Name="ID_Home_Expense" />
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_Home_Expense_Detail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Home_Expense" Type="int" Nullable="false" />
+          <Property Name="ID_User" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Spent_Money" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Home_Expenses">
+          <Key>
+            <PropertyRef Name="ID_Home_Expense" />
+          </Key>
+          <Property Name="ID_Home_Expense" Type="int" Nullable="false" />
+          <Property Name="Description_Home_Expense" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FinancesChallengeDBModelStoreContainer">
+          <EntitySet Name="Expense_Detail" EntityType="Self.Expense_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Home_Expense_Detail" EntityType="Self.Home_Expense_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Home_Expenses" EntityType="Self.Home_Expenses" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinancesChallengeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Expense_Detail">
+          <Key>
+            <PropertyRef Name="ID_Expense" />
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_Expense_Detail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Expense" Type="Int32" Nullable="false" />
+          <Property Name="ID_User" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Spent_Money" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expenses">
+          <Key>
+            <PropertyRef Name="ID_Expense" />
+          </Key>
+          <Property Name="ID_Expense" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description_Expense" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Home_Expense_Detail">
+          <Key>
+            <PropertyRef Name="ID_Home_Expense" />
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_Home_Expense_Detail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Home_Expense" Type="Int32" Nullable="false" />
+          <Property Name="ID_User" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Spent_Money" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Home_Expenses">
+          <Key>
+            <PropertyRef Name="ID_Home_Expense" />
+          </Key>
+          <Property Name="ID_Home_Expense" Type="Int32" Nullable="false" />
+          <Property Name="Description_Home_Expense" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FinancesChallengeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Expense_Detail" EntityType="Self.Expense_Detail" />
+          <EntitySet Name="Expenses" EntityType="Self.Expenses" />
+          <EntitySet Name="Home_Expense_Detail" EntityType="Self.Home_Expense_Detail" />
+          <EntitySet Name="Home_Expenses" EntityType="Self.Home_Expenses" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinancesChallengeDBModelStoreContainer" CdmEntityContainer="FinancesChallengeDBEntities">
+          <EntitySetMapping Name="Expense_Detail">
+            <EntityTypeMapping TypeName="FinancesChallengeDBModel.Expense_Detail">
+              <MappingFragment StoreEntitySet="Expense_Detail">
+                <ScalarProperty Name="ID_Expense_Detail" ColumnName="ID_Expense_Detail" />
+                <ScalarProperty Name="ID_Expense" ColumnName="ID_Expense" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Spent_Money" ColumnName="Spent_Money" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="FinancesChallengeDBModel.Expenses">
+              <MappingFragment StoreEntitySet="Expenses">
+                <ScalarProperty Name="ID_Expense" ColumnName="ID_Expense" />
+                <ScalarProperty Name="Description_Expense" ColumnName="Description_Expense" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Home_Expense_Detail">
+            <EntityTypeMapping TypeName="FinancesChallengeDBModel.Home_Expense_Detail">
+              <MappingFragment StoreEntitySet="Home_Expense_Detail">
+                <ScalarProperty Name="ID_Home_Expense_Detail" ColumnName="ID_Home_Expense_Detail" />
+                <ScalarProperty Name="ID_Home_Expense" ColumnName="ID_Home_Expense" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Spent_Money" ColumnName="Spent_Money" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Home_Expenses">
+            <EntityTypeMapping TypeName="FinancesChallengeDBModel.Home_Expenses">
+              <MappingFragment StoreEntitySet="Home_Expenses">
+                <ScalarProperty Name="ID_Home_Expense" ColumnName="ID_Home_Expense" />
+                <ScalarProperty Name="Description_Home_Expense" ColumnName="Description_Home_Expense" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
