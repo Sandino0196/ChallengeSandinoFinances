@@ -15,8 +15,9 @@ namespace ChallengeSandinoFinances.Controllers
         {
 
         }
+        [HttpGet]
         [Route("api/Expense_Detail/GetDetail")]
-        public IEnumerable<Expense_DetailModel> Get()
+        public IEnumerable<Expense_DetailModel> GetDetail()
         {
             string db = "Data Source=.;Initial Catalog=FinancesChallengeDB;Integrated Security=True";
             SqlConnection conn = new SqlConnection(db);
@@ -43,13 +44,13 @@ namespace ChallengeSandinoFinances.Controllers
         }
 
         // GET: api/Expense_Detail
-        /*public IEnumerable<Expense_Detail> Get()
+        public IEnumerable<Expense_Detail> Get()
         {
             using (FinancesChallengeDBEntities entities = new FinancesChallengeDBEntities())
             {
                 return entities.Expense_Detail.ToList();
             }
-        }*/
+        }
 
         // GET: api/Expense_Detail/5
         public Expense_Detail Get(int id)

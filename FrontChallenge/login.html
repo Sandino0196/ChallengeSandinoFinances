@@ -84,9 +84,10 @@
             });
             $('#btnLogin').click(function () {
                 $.ajax({
-                    url: 'http://localhost:59894/api/Account/ExternalLogin',
+                    url: 'http://localhost:59894/Token',
                     method: 'post',
-                    contentType: 'application/json',
+                    contentType: 'jsonp',
+                    crossDomain: true,
                     data: {                        
                         UserName: $('#txtUsername').val(),
                         Password: $('#txtPassword').val(),

@@ -1,5 +1,6 @@
 ﻿using ChallengeSandinoFinances.Models;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -7,12 +8,40 @@ using System.Web.Http.Cors;
 namespace ChallengeSandinoFinances.Controllers
 {
     [EnableCorsAttribute("*", "*", "*")]
-    [Authorize]
+    //[Authorize]
     public class Home_Expense_DetailController : ApiController
     {
         public Home_Expense_DetailController()
         {
 
+        }
+
+        [HttpGet]
+        [Route("api/Home_Expense_Detail/GetDetail")]
+        public IEnumerable<Home_Expense_DetailModel> GetDetail()
+        {
+            string db = "Data Source=.;Initial Catalog=FinancesChallengeDB;Integrated Security=True";
+            SqlConnection conn = new SqlConnection(db);
+            string sql = "select [Description_Home_Expense] as 'Expense', [Date] as 'Date', " +
+                "[Spent_Money] as 'Mount' from[dbo].[Home_Expense_Detail] a inner join[dbo].[Home_Expenses] " +
+                "b on a.ID_Home_Expense = b.ID_Home_Expense inner join[dbo].[AspNetUsers] c on " +
+                "c.Id = a.ID_User where[UserName] = 'sandino'";
+            SqlCommand command = new SqlCommand(sql, conn);
+            conn.Open();
+            List<Home_Expense_DetailModel> list = new List<Home_Expense_DetailModel>();
+
+            SqlDataReader rd = command.ExecuteReader();
+            while (rd.Read())
+            {
+                list.Add(new Home_Expense_DetailModel()
+                {
+                    Description_Home_Expense = rd.GetString(rd.GetOrdinal("Expense")),
+                    Date = rd.GetDateTime(rd.GetOrdinal("Date")),
+                    Spent_Money = rd.GetDecimal(rd.GetOrdinal("Mount"))
+                });
+            }
+            conn.Close();
+            return list;
         }
 
         // GET: api/Home_Expense_Detail

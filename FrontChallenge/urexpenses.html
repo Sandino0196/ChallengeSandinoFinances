@@ -23,6 +23,7 @@
                 </ul>
             </div>
         </nav>
+        <p class="h3 text-center text-capitalize">Personal Expenses</p>
         <table class="table table-bordered well">
             <thead class="info text-center">
                 <tr>
@@ -31,9 +32,21 @@
                     <th>Mount</th>
                 </tr>
             </thead>
-            <tbody id="dataExpense_Detail">
-
-            </tbody>
+            <tbody id="dataExpenses"></tbody>
+        </table>
+        <br />
+        <hr />
+        <br />
+        <p class="h3 text-center text-capitalize">Home Expenses</p>
+        <table class="table table-bordered well">
+            <thead class="info text-center">
+                <tr>
+                    <th>Expenses</th>
+                    <th>Date</th>
+                    <th>Mount</th>
+                </tr>
+            </thead>
+            <tbody id="dataHomeExpenses"></tbody>
         </table>
 
     </div>
@@ -51,23 +64,45 @@
                 document.getElementById("pLogin").textContent = "Logout";
             } else {
                 document.getElementById("pLogin").textContent = "Login";
-            }            
-                $.ajax({
-                    url: 'http://localhost:59894/api/Expense_DetailController/GetDetail',
-                    dataType: 'xml',
-                    success: function (data) {
-                        $(data).find('Expense_DetailModel').each(function () {
-                            $('#dataExpense_Detail').append(
-                                '<tr>' +
-                                    '<td>' + $(this).find('Expense').text() + '</td>' +
-                                    '<td>' + $(this).find('Date').text() + '</td>' +
-                                    '<td>' + $(this).find('Mount').text() + '</td>' +
-                                '</tr>'
-                            );
-                        });
-                    }
-                });
-        });                
+            }
+            expenses();            
+            homeExpenses();
+        });
+        function expenses() {
+            $.ajax({
+                url: 'http://localhost:59894/api/expense_detail/getdetail',
+                dataType: 'xml',
+                success: function (data) {
+                    $(data).find('Expense_DetailModel').each(function () {
+                        $('#dataExpenses').append(
+                            '<tr>' +
+                                '<td>' + $(this).find('Description_Expense').text() + '</td>' +
+                                '<td>' + $(this).find('Date').text() + '</td>' +
+                                '<td>' + $(this).find('Spent_Money').text() + '</td>' +
+                            '</tr>'
+                        );
+                    });
+                }
+            });
+        };
+        function homeExpenses() {
+            $.ajax({
+                url: 'http://localhost:59894/api/home_expense_detail/getdetail',
+                dataType: 'xml',
+                success: function (data) {
+                    $(data).find('Home_Expense_DetailModel').each(function () {
+                        $('#dataHomeExpenses').append(
+                            '<tr>' +
+                            '<td>' + $(this).find('Description_Home_Expense').text() + '</td>' +
+                            '<td>' + $(this).find('Date').text() + '</td>' +
+                            '<td>' + $(this).find('Spent_Money').text() + '</td>' +
+                            '</tr>'
+                        );
+                    });
+                }
+            });
+        };
+        
     </script>
 </body>
 </html>

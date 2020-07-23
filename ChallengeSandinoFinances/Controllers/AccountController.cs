@@ -222,6 +222,7 @@ namespace ChallengeSandinoFinances.Controllers
         }
 
         // GET api/Account/ExternalLogin
+        [HttpGet]
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
