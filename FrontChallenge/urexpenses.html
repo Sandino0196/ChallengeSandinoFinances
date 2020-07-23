@@ -16,6 +16,7 @@
                     <li><a href="expenses.html"><span class="glyphicon glyphicon-usd"></span>   Expenses</a></li>
                     <li><a href="home_expenses.html"><span class="glyphicon glyphicon-list-alt"></span>   Home Expenses</a></li>
                     <li class="disabled"><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>
+                    <li class="hidden"><a href="maintenanceMenu.html"><span class="	glyphicon glyphicon-wrench"></span>   Maintenance</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
@@ -23,7 +24,11 @@
                 </ul>
             </div>
         </nav>
-        <p class="h3 text-center text-capitalize">Personal Expenses</p>
+        <div class="text-center">
+            <input type="button" class="btn btn-info" id="btnExpense" value="Personal Expenses" />
+            <input type="button" class="btn btn-info" id="btnHomeExpense" value="Home Expenses" />
+        </div>
+        <p class="h3 text-center text-capitalize" id="titleTable"></p>
         <table class="table table-bordered well">
             <thead class="info text-center">
                 <tr>
@@ -33,20 +38,6 @@
                 </tr>
             </thead>
             <tbody id="dataExpenses"></tbody>
-        </table>
-        <br />
-        <hr />
-        <br />
-        <p class="h3 text-center text-capitalize">Home Expenses</p>
-        <table class="table table-bordered well">
-            <thead class="info text-center">
-                <tr>
-                    <th>Expenses</th>
-                    <th>Date</th>
-                    <th>Mount</th>
-                </tr>
-            </thead>
-            <tbody id="dataHomeExpenses"></tbody>
         </table>
 
     </div>
@@ -64,11 +55,11 @@
                 document.getElementById("pLogin").textContent = "Logout";
             } else {
                 document.getElementById("pLogin").textContent = "Login";
-            }
-            expenses();            
-            homeExpenses();
+            }           
         });
-        function expenses() {
+        $('#btnExpense').click(function () {
+            $('#dataExpenses').empty();
+            document.getElementById("titleTable").textContent = "Personal Expenses";
             $.ajax({
                 url: 'http://localhost:59894/api/expense_detail/getdetail',
                 dataType: 'xml',
@@ -84,25 +75,26 @@
                     });
                 }
             });
-        };
-        function homeExpenses() {
+        });
+        $('#btnHomeExpense').click(function () {
+            $('#dataExpenses').empty();
+            document.getElementById("titleTable").textContent = "Home Expenses";
             $.ajax({
                 url: 'http://localhost:59894/api/home_expense_detail/getdetail',
                 dataType: 'xml',
                 success: function (data) {
                     $(data).find('Home_Expense_DetailModel').each(function () {
-                        $('#dataHomeExpenses').append(
+                        $('#dataExpenses').append(
                             '<tr>' +
-                            '<td>' + $(this).find('Description_Home_Expense').text() + '</td>' +
-                            '<td>' + $(this).find('Date').text() + '</td>' +
-                            '<td>' + $(this).find('Spent_Money').text() + '</td>' +
+                                '<td>' + $(this).find('Description_Home_Expense').text() + '</td>' +
+                                '<td>' + $(this).find('Date').text() + '</td>' +
+                                '<td>' + $(this).find('Spent_Money').text() + '</td>' +
                             '</tr>'
                         );
                     });
                 }
             });
-        };
-        
+        });
     </script>
 </body>
 </html>
