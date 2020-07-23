@@ -271,10 +271,6 @@
     <Content Include="home_expenses.html" />
     <Content Include="index.html" />
     <Content Include="login.html" />
-    <Content Include="maintenanceExpense.html" />
-    <Content Include="maintenanceHome_Expense.html" />
-    <Content Include="maintenanceMenu.html" />
-    <Content Include="maintenanceUser.html" />
     <Content Include="Models\FinanacesDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FinanacesDataModel.edmx</DependentUpon>

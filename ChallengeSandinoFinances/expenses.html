@@ -15,8 +15,7 @@
                 <ul class="nav navbar-nav">
                     <li class="disabled"><a href="expenses.html"><span class="glyphicon glyphicon-usd"></span>  Expenses</a></li>
                     <li><a href="home_expenses.html"><span class="	glyphicon glyphicon-list-alt"></span>   Home Expenses</a></li>
-                    <li><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>
-                    <li class="hidden"><a href="maintenanceMenu.html"><span class="	glyphicon glyphicon-wrench"></span>   Maintenance</a></li>
+                    <li><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -41,9 +40,6 @@
                 $('#dataExpenses').removeClass('hidden');
             } else {
                 document.getElementById("pLogin").textContent = "Login";
-            }
-            if (localStorage.getItem('userName') == 'sandino') {
-                $('#liMain').removeClass('hidden');
             }
             $('#liLogin').click(function () {
                 if (localStorage.getItem('accessToken') != null) {
