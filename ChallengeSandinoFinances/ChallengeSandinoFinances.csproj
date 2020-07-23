@@ -224,32 +224,32 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Expenses.cs">
-      <DependentUpon>FinancesDataModel.tt</DependentUpon>
+      <DependentUpon>FinanacesDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Expense_Detail.cs">
-      <DependentUpon>FinancesDataModel.tt</DependentUpon>
+      <DependentUpon>FinanacesDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Expense_DetailModel.cs" />
-    <Compile Include="Models\FinancesDataModel.Context.cs">
+    <Compile Include="Models\FinanacesDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FinancesDataModel.Context.tt</DependentUpon>
+      <DependentUpon>FinanacesDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FinancesDataModel.cs">
+    <Compile Include="Models\FinanacesDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FinancesDataModel.tt</DependentUpon>
+      <DependentUpon>FinanacesDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FinancesDataModel.Designer.cs">
+    <Compile Include="Models\FinanacesDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FinancesDataModel.edmx</DependentUpon>
+      <DependentUpon>FinanacesDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Home_Expenses.cs">
-      <DependentUpon>FinancesDataModel.tt</DependentUpon>
+      <DependentUpon>FinanacesDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Home_Expense_Detail.cs">
-      <DependentUpon>FinancesDataModel.tt</DependentUpon>
+      <DependentUpon>FinanacesDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Home_Expense_DetailModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -264,18 +264,26 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="expenses.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\FinancesDataModel.Context.tt">
+    <Content Include="home_expenses.html" />
+    <Content Include="index.html" />
+    <Content Include="login.html" />
+    <Content Include="maintenanceExpense.html" />
+    <Content Include="maintenanceHome_Expense.html" />
+    <Content Include="maintenanceMenu.html" />
+    <Content Include="maintenanceUser.html" />
+    <Content Include="Models\FinanacesDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FinancesDataModel.edmx</DependentUpon>
-      <LastGenOutput>FinancesDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>FinanacesDataModel.edmx</DependentUpon>
+      <LastGenOutput>FinanacesDataModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\FinancesDataModel.tt">
+    <Content Include="Models\FinanacesDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FinancesDataModel.edmx</DependentUpon>
-      <LastGenOutput>FinancesDataModel.cs</LastGenOutput>
+      <DependentUpon>FinanacesDataModel.edmx</DependentUpon>
+      <LastGenOutput>FinanacesDataModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -298,12 +306,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\FinancesDataModel.edmx">
+    <EntityDeploy Include="Models\FinanacesDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FinancesDataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>FinanacesDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\FinancesDataModel.edmx.diagram">
-      <DependentUpon>FinancesDataModel.edmx</DependentUpon>
+    <Content Include="Models\FinanacesDataModel.edmx.diagram">
+      <DependentUpon>FinanacesDataModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -316,6 +324,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="signup.html" />
+    <Content Include="urexpenses.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

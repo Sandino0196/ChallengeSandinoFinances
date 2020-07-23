@@ -7,7 +7,7 @@ using System.Web.Http.Cors;
 
 namespace ChallengeSandinoFinances.Controllers
 {
-    [EnableCorsAttribute("*", "*", "*")]
+    //[EnableCorsAttribute("*", "*", "*")]
     //[Authorize]
     public class Home_Expense_DetailController : ApiController
     {
@@ -17,15 +17,15 @@ namespace ChallengeSandinoFinances.Controllers
         }
 
         [HttpGet]
-        [Route("api/Home_Expense_Detail/GetDetail")]
-        public IEnumerable<Home_Expense_DetailModel> GetDetail()
+        [Route("api/Home_Expense_Detail/GetDetail/{UserName}")]
+        public IEnumerable<Home_Expense_DetailModel> GetDetail(string UserName)
         {
             string db = "Data Source=.;Initial Catalog=FinancesChallengeDB;Integrated Security=True";
             SqlConnection conn = new SqlConnection(db);
             string sql = "select [Description_Home_Expense] as 'Expense', [Date] as 'Date', " +
                 "[Spent_Money] as 'Mount' from[dbo].[Home_Expense_Detail] a inner join[dbo].[Home_Expenses] " +
                 "b on a.ID_Home_Expense = b.ID_Home_Expense inner join[dbo].[AspNetUsers] c on " +
-                "c.Id = a.ID_User where[UserName] = 'sandino'";
+                "c.Id = a.ID_User where [UserName] = '"+UserName+"'";
             SqlCommand command = new SqlCommand(sql, conn);
             conn.Open();
             List<Home_Expense_DetailModel> list = new List<Home_Expense_DetailModel>();

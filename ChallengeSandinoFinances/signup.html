@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <title>Login</title>
+    <title>New User</title>
 </head>
 <body style="background-color:cadetblue">
     <div class="col-md-10 col-lg-offset-1">
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse text-center">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-home"></span>   Home</a>
@@ -19,8 +19,8 @@
                     <li class="hidden"><a href="maintenanceMenu.html"><span class="	glyphicon glyphicon-wrench"></span>   Maintenance</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li class="disabled"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
+                    <li class="disabled"><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span><p id="pLogin">Login</p></a></li>
                 </ul>
             </div>
         </nav>
@@ -28,21 +28,29 @@
             <thead>
                 <tr class="info">
                     <td colspan="2" class="text-center h3">
-                        Login
+                        New User Registration
                     </td>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Username</td>
-                    <td><input type="text" id="txtUsername" placeholder="Your username" /></td>
+                    <td><input type="text" id="txtUsername" placeholder="Anything you want" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" id="txtEmail" placeholder="example@gmail.com" /></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" id="txtPassword" placeholder="Your password" /></td>
+                    <td><input type="password" id="txtPassword" placeholder="Confidential" /></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password</td>
+                    <td><input type="password" id="txtConfirmPassword" placeholder="Confirm Confidential" /></td>
                 </tr>
                 <tr class="success">
-                    <td colspan="2"><input type="button" id="btnLogin" value="Confirm" class="btn btn-success center-block" style="width:200px" /></td>
+                    <td colspan="2"><input type="button" id="btnRegister" value="Register" class="btn btn-success center-block" style="width:200px"/></td>
                 </tr>
             </tbody>
         </table>
@@ -55,7 +63,7 @@
                         Success
                     </div>
                     <div class="modal-body h1">
-                        Welcome to my page! :D
+                        Registration Successfull
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-success" type="button" data-dismiss="modal">Close</button>
@@ -67,7 +75,6 @@
         <div id="divError" class="alert alert-danger collapse">
             <a id="linkClose" class="close" href="#">&times;</a>
             <div id="divErrorText">
-
             </div>
         </div>
     </div>
@@ -83,22 +90,21 @@
             $('#linkClose').click(function () {
                 $('#divError').hide('fade');
             });
-            $('#btnLogin').click(function () {
+            $(successModal).on('hidden.bs.modal', function () {
+                window.location.href = 'login.html';
+            });
+            $('#btnRegister').click(function () {
                 $.ajax({
-                    url: 'http://localhost:59894/Token',
+                    url: 'http://localhost:59894/api/Account/Register',
                     method: 'post',
-                    contentType: 'application/json',
-                    crossDomain: true,
-                    data: {                        
+                    data: {
                         UserName: $('#txtUsername').val(),
+                        Email: $('#txtEmail').val(),
                         Password: $('#txtPassword').val(),
-                        grant_type: 'password'
+                        ConfirmPassword: $('#txtConfirmPassword').val()
                     },
-                    success: function (response) {
-                        localStorage.setItem('accessToken', response.accessToken);
-                        localStorage.setItem('userName', response.userName);
+                    success: function () {
                         $('#successModal').modal('show');
-                        window.location.href('index.html');
                     },
                     error: function (error) {
                         $('#divErrorText').text(error.responseText);

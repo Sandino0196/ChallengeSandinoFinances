@@ -7,12 +7,13 @@
       <Schema Namespace="FinancesChallengeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Expense_Detail">
           <Key>
+            <PropertyRef Name="ID_Expense_Detail" />
             <PropertyRef Name="ID_Expense" />
-            <PropertyRef Name="ID_User" />
+            <PropertyRef Name="UserName" />
           </Key>
           <Property Name="ID_Expense_Detail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Expense" Type="int" Nullable="false" />
-          <Property Name="ID_User" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Spent_Money" Type="money" Nullable="false" />
         </EntityType>
@@ -25,12 +26,13 @@
         </EntityType>
         <EntityType Name="Home_Expense_Detail">
           <Key>
+            <PropertyRef Name="ID_Home_Expense_Detail" />
             <PropertyRef Name="ID_Home_Expense" />
-            <PropertyRef Name="ID_User" />
+            <PropertyRef Name="UserName" />
           </Key>
           <Property Name="ID_Home_Expense_Detail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Home_Expense" Type="int" Nullable="false" />
-          <Property Name="ID_User" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Spent_Money" Type="money" Nullable="false" />
         </EntityType>
@@ -38,7 +40,7 @@
           <Key>
             <PropertyRef Name="ID_Home_Expense" />
           </Key>
-          <Property Name="ID_Home_Expense" Type="int" Nullable="false" />
+          <Property Name="ID_Home_Expense" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description_Home_Expense" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityContainer Name="FinancesChallengeDBModelStoreContainer">
@@ -54,12 +56,13 @@
       <Schema Namespace="FinancesChallengeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Expense_Detail">
           <Key>
+            <PropertyRef Name="ID_Expense_Detail" />
             <PropertyRef Name="ID_Expense" />
-            <PropertyRef Name="ID_User" />
+            <PropertyRef Name="UserName" />
           </Key>
           <Property Name="ID_Expense_Detail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Expense" Type="Int32" Nullable="false" />
-          <Property Name="ID_User" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Spent_Money" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
         </EntityType>
@@ -72,12 +75,13 @@
         </EntityType>
         <EntityType Name="Home_Expense_Detail">
           <Key>
+            <PropertyRef Name="ID_Home_Expense_Detail" />
             <PropertyRef Name="ID_Home_Expense" />
-            <PropertyRef Name="ID_User" />
+            <PropertyRef Name="UserName" />
           </Key>
           <Property Name="ID_Home_Expense_Detail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Home_Expense" Type="Int32" Nullable="false" />
-          <Property Name="ID_User" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Spent_Money" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
         </EntityType>
@@ -85,7 +89,7 @@
           <Key>
             <PropertyRef Name="ID_Home_Expense" />
           </Key>
-          <Property Name="ID_Home_Expense" Type="Int32" Nullable="false" />
+          <Property Name="ID_Home_Expense" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description_Home_Expense" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityContainer Name="FinancesChallengeDBEntities" annotation:LazyLoadingEnabled="true">
@@ -105,7 +109,7 @@
               <MappingFragment StoreEntitySet="Expense_Detail">
                 <ScalarProperty Name="ID_Expense_Detail" ColumnName="ID_Expense_Detail" />
                 <ScalarProperty Name="ID_Expense" ColumnName="ID_Expense" />
-                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Spent_Money" ColumnName="Spent_Money" />
               </MappingFragment>
@@ -124,7 +128,7 @@
               <MappingFragment StoreEntitySet="Home_Expense_Detail">
                 <ScalarProperty Name="ID_Home_Expense_Detail" ColumnName="ID_Home_Expense_Detail" />
                 <ScalarProperty Name="ID_Home_Expense" ColumnName="ID_Home_Expense" />
-                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Spent_Money" ColumnName="Spent_Money" />
               </MappingFragment>

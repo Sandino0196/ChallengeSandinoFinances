@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Expenses</title>
+</head>
+<body style="background-color:cadetblue">
+    <div class="col-md-10 col-lg-offset-1">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-home"></span>   Home</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="disabled"><a href="expenses.html"><span class="glyphicon glyphicon-usd"></span>  Expenses</a></li>
+                    <li><a href="home_expenses.html"><span class="	glyphicon glyphicon-list-alt"></span>   Home Expenses</a></li>
+                    <li><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>
+                    <li class="hidden"><a href="maintenanceMenu.html"><span class="	glyphicon glyphicon-wrench"></span>   Maintenance</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span><p id="pLogin">Login</p></a></li>
+                </ul>
+            </div>
+        </nav>        
+        <div class="row hidden" id="dataExpenses">
+        </div>
+    </div>
+    <footer class="container" style="padding-top:50%;">
+        <hr />
+        Copyright Rodrigo Sandino 2020
+    </footer>
+
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (localStorage.getItem('accessToken') != null) {
+                document.getElementById("pLogin").textContent = "Logout";
+                $('#dataExpenses').removeClass('hidden');
+            } else {
+                document.getElementById("pLogin").textContent = "Login";
+            }
+            if (localStorage.getItem('userName') == 'sandino') {
+                $('#liMain').removeClass('hidden');
+            }
+            $('#liLogin').click(function () {
+                if (localStorage.getItem('accessToken') != null) {
+                    localStorage.removeItem('accessToken');                
+                }
+            });
+            $.ajax({
+                url: 'http://localhost:59894/api/Expenses',
+                dataType: 'xml',                
+                success: function (data) {
+                   $(data).find('Expenses').each(function () {
+                        $('#dataExpenses').append(
+                            '<div class="col-sm-4 panel panel-default text-center">' +
+                                '<div class="panel-heading">' +
+                                    $(this).find('Description_Expense').text() +
+                                '</div>' +
+                                '<div class="panel-body">' +
+                                    '<input type="text" id="txtExpense' + $(this).find('ID_Expense').text() + '" placeholder="Anything you want" />' +
+                                '</div>' +
+                            '</div>'
+                        );
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

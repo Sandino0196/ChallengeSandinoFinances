@@ -83,13 +83,16 @@
             $('#linkClose').click(function () {
                 $('#divError').hide('fade');
             });
+            $(successModal).on('hidden.bs.modal', function () {
+                window.location.href = 'index.html';
+            });
             $('#btnLogin').click(function () {
                 $.ajax({
                     url: 'http://localhost:59894/Token',
                     method: 'post',
                     contentType: 'application/json',
                     crossDomain: true,
-                    data: {                        
+                    data: {
                         UserName: $('#txtUsername').val(),
                         Password: $('#txtPassword').val(),
                         grant_type: 'password'
@@ -98,7 +101,6 @@
                         localStorage.setItem('accessToken', response.accessToken);
                         localStorage.setItem('userName', response.userName);
                         $('#successModal').modal('show');
-                        window.location.href('index.html');
                     },
                     error: function (error) {
                         $('#divErrorText').text(error.responseText);
