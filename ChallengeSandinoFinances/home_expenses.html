@@ -15,7 +15,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="expenses.html"><span class="glyphicon glyphicon-usd"></span>  Expenses</a></li>
                     <li class="disabled"><a href="home_expenses.html"><span class="	glyphicon glyphicon-list-alt"></span>   Home Expenses</a></li>
-                    <li><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>                    
+                    <li><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -30,7 +30,7 @@
                     Food
                 </div>
                 <div class="panel-body">
-                    <img src="images/food-min.jpg" class="img-responsive" style="height:200px;"/>                    
+                    <img src="images/food-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtFood" placeholder="Mount" />
                 </div>
@@ -44,7 +44,7 @@
                     Water
                 </div>
                 <div class="panel-body">
-                    <img src="images/water-min.jpg" class="img-responsive" style="height:200px;"/>                    
+                    <img src="images/water-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtWater" placeholder="Mount" />
                 </div>
@@ -58,13 +58,13 @@
                     Power Energy
                 </div>
                 <div class="panel-body">
-                    <img src="images/energy-min.jpg" class="img-responsive" style="height:200px;"/>                    
+                    <img src="images/energy-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
-                    <input type="number" id="txtMedicine" placeholder="Mount" />
+                    <input type="number" id="txtEnergy" placeholder="Mount" />
                 </div>
                 <div class="panel-footer h5">
                     You can't live without it
-                    <input type="button" value="Confirm" id="btnMed" class="btn btn-info" />
+                    <input type="button" value="Confirm" id="btnEnergy" class="btn btn-info" />
                 </div>
             </div>
             <div class="col-sm-4 panel panel-default text-center">
@@ -72,13 +72,13 @@
                     Internet
                 </div>
                 <div class="panel-body">
-                    <img src="images/internet-min.jpg" class="img-responsive" style="height:200px;"/>                    
+                    <img src="images/internet-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
-                    <input type="number" id="txtGas" placeholder="Mount" />
+                    <input type="number" id="txtWeb" placeholder="Mount" />
                 </div>
                 <div class="panel-footer h5">
                     It's your whole life
-                    <input type="button" value="Confirm" id="btnGas" class="btn btn-info" />
+                    <input type="button" value="Confirm" id="btnWeb" class="btn btn-info" />
                 </div>
             </div>
             <div class="col-sm-4 panel panel-default text-center">
@@ -86,13 +86,13 @@
                     TV Cable
                 </div>
                 <div class="panel-body">
-                    <img src="images/television-min.jpeg" class="img-responsive" style="height:200px;"/>                    
+                    <img src="images/television-min.jpeg" class="img-responsive" style="height:200px;" />
                     <br />
-                    <input type="number" id="txtGas" placeholder="Mount" />
+                    <input type="number" id="txtTV" placeholder="Mount" />
                 </div>
                 <div class="panel-footer h5">
                     This isn't that necessary
-                    <input type="button" value="Confirm" id="btnGas" class="btn btn-info" />
+                    <input type="button" value="Confirm" id="btnTV" class="btn btn-info" />
                 </div>
             </div>
             <div class="col-sm-4 panel panel-default text-center">
@@ -100,13 +100,30 @@
                     Phone
                 </div>
                 <div class="panel-body">
-                    <img src="images/phone-min.png" class="img-responsive" style="height:200px;"/>                    
+                    <img src="images/phone-min.png" class="img-responsive" style="height:200px;" />
                     <br />
-                    <input type="number" id="txtGas" placeholder="Mount" />
+                    <input type="number" id="txtPhone" placeholder="Mount" />
                 </div>
                 <div class="panel-footer h5">
                     You must have one
-                    <input type="button" value="Confirm" id="btnGas" class="btn btn-info" />
+                    <input type="button" value="Confirm" id="btnPhone" class="btn btn-info" />
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" tabindex="-1" id="successModal" data-keyboard="false"
+             data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header h4">
+                        Success
+                    </div>
+                    <div class="modal-body h1">
+                        You added your expense (calm down)
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="button" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,7 +140,7 @@
             if (localStorage.getItem('accessToken') != null) {                
                 document.getElementById("pLogin").textContent = "Logout";
                 $('#dataHomeExpenses').removeClass('hidden');
-            } else {                
+            } else {
                 document.getElementById("pLogin").textContent = "Login";
             }
             $('#liLogin').click(function () {
@@ -138,10 +155,10 @@
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'http://localhost:59894/api/Home_Expense_Detail',
                 method: 'POST',
                 data: {
-                    ID_Expense: 1,
+                    ID_Home_Expense: 1,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
                     Spent_Money: $('#txtFood').val()
@@ -159,10 +176,10 @@
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'http://localhost:59894/api/Home_Expense_Detail',
                 method: 'POST',
                 data: {
-                    ID_Expense: 2,
+                    ID_Home_Expense: 2,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
                     Spent_Money: $('#txtWater').val()
@@ -176,17 +193,17 @@
             });
         });
 
-        $('#btnMed').click(function () {
+        $('#btnEnergy').click(function () {
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'http://localhost:59894/api/Home_Expense_Detail',
                 method: 'POST',
                 data: {
-                    ID_Expense: 3,
+                    ID_Home_Expense: 3,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtMed').val()
+                    Spent_Money: $('#txtEnergy').val()
                 },
                 success: function () {
                     //$('#successModal').modal('show');
@@ -197,17 +214,17 @@
             });
         });
 
-        $('#btnGas').click(function () {
+        $('#btnWeb').click(function () {
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'http://localhost:59894/api/Home_Expense_Detail',
                 method: 'POST',
                 data: {
-                    ID_Expense: 4,
+                    ID_Home_Expense: 4,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtGas').val()
+                    Spent_Money: $('#txtWeb').val()
                 },
                 success: function () {
                     // $('#successModal').modal('show');
@@ -218,17 +235,17 @@
             });
         });
 
-        $('#btnEnter').click(function () {
+        $('#btnTV').click(function () {
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'http://localhost:59894/api/Home_Expense_Detail',
                 method: 'POST',
                 data: {
-                    ID_Expense: 5,
+                    ID_Home_Expense: 5,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtEnter').val()
+                    Spent_Money: $('#txtTV').val()
                 },
                 success: function () {
                     //$('#successModal').modal('show');
@@ -239,17 +256,17 @@
             });
         });
 
-        $('#btnClothes').click(function () {
+        $('#btnPhone').click(function () {
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'http://localhost:59894/api/Home_Expense_Detail',
                 method: 'POST',
                 data: {
-                    ID_Expense: 6,
+                    ID_Home_Expense: 6,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtClothes').val()
+                    Spent_Money: $('#txtPhone').val()
                 },
                 success: function () {
 

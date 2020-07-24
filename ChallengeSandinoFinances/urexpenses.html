@@ -27,17 +27,19 @@
             <input type="button" class="btn btn-info" id="btnExpense" value="Personal Expenses" />
             <input type="button" class="btn btn-info" id="btnHomeExpense" value="Home Expenses" />
         </div>
-        <p class="h3 text-center text-capitalize" id="titleTable"></p>
-        <table class="table table-bordered well">
-            <thead class="info text-center">
-                <tr>
-                    <th>Expenses</th>
-                    <th>Date</th>
-                    <th>Mount</th>
-                </tr>
-            </thead>
-            <tbody id="dataExpenses"></tbody>
-        </table>
+        <div class="hidden" id="tableContent">
+            <p class="h3 text-center text-capitalize" id="titleTable"></p>
+            <table class="table table-bordered well">
+                <thead class="info text-center">
+                    <tr>
+                        <th>Expenses</th>
+                        <th>Date</th>
+                        <th>Mount</th>
+                    </tr>
+                </thead>
+                <tbody id="dataExpenses"></tbody>
+            </table>
+        </div>        
 
     </div>
     <div id="divError" class="alert alert-danger collapse">
@@ -58,6 +60,7 @@
         $(document).ready(function () {
             if (localStorage.getItem('accessToken') != null) {
                 document.getElementById("pLogin").textContent = "Logout";
+                $('#tableContent').removeClass('hidden');
             } else {
                 document.getElementById("pLogin").textContent = "Login";
             }
@@ -80,9 +83,9 @@
                     $(data).find('Expense_DetailModel').each(function () {                                                    
                         $('#dataExpenses').append(
                             '<tr>' +
-                            '<td>' + $(this).find('Description_Expense').text() + '</td>' +
-                            '<td>' + $(this).find('Date').text() + '</td>' +
-                            '<td>' + $(this).find('Spent_Money').text() + '</td>' +
+                                '<td>' + $(this).find('Description_Expense').text() + '</td>' +
+                                '<td>' + $(this).find('Date').text() + '</td>' +
+                                '<td>' + $(this).find('Spent_Money').text() + '</td>' +
                             '</tr>'
                         );
                     });
@@ -99,9 +102,9 @@
                     $(data).find('Home_Expense_DetailModel').each(function () {
                         $('#dataExpenses').append(
                             '<tr>' +
-                            '<td>' + $(this).find('Description_Home_Expense').text() + '</td>' +
-                            '<td>' + $(this).find('Date').text() + '</td>' +
-                            '<td>' + $(this).find('Spent_Money').text() + '</td>' +
+                                '<td>' + $(this).find('Description_Home_Expense').text() + '</td>' +
+                                '<td>' + $(this).find('Date').text() + '</td>' +
+                                '<td>' + $(this).find('Spent_Money').text() + '</td>' +
                             '</tr>'
                         );
                     });
