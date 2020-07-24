@@ -31,7 +31,8 @@
                 <div class="panel-body">
                     <img src="images/Fast_Food-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
-                    <input type="number" id="txtFood" placeholder="Mount"/>
+                    <input type="number" id="txtFood" placeholder="Mount" />
+                    <input type="text" id="txtFoodResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     Don't abuse of this
@@ -46,6 +47,7 @@
                     <img src="images/Coffee-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtCoffee" placeholder="Mount" />
+                    <input type="text" id="txtCoffeeResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     Perfect for your day
@@ -59,7 +61,8 @@
                 <div class="panel-body">
                     <img src="images/Medicine-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
-                    <input type="number" id="txtMedicine" placeholder="Mount" />
+                    <input type="number" id="txtMed" placeholder="Mount" />
+                    <input type="text" id="txtMedResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     I hope don't use this so much
@@ -74,6 +77,7 @@
                     <img src="images/Gas-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtGas" placeholder="Mount" />
+                    <input type="text" id="txtGasResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     Your car needs food too
@@ -88,6 +92,7 @@
                     <img src="images/Entertainment-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtEnter" placeholder="Mount" />
+                    <input type="text" id="txtEnterResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     Just chill man
@@ -102,6 +107,7 @@
                     <img src="images/Clothes-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtClothes" placeholder="Mount" />
+                    <input type="text" id="txtClothesResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     You gotta need it
@@ -161,7 +167,8 @@
                     ID_Expense: 1,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtFood').val()
+                    Spent_Money: $('#txtFood').val(),
+                    Expense_Resume: $('#txtFoodResume').val()
                 },
                 success: function () {
                     //$('#successModal').modal('show');
@@ -182,7 +189,8 @@
                     ID_Expense: 2,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtCoffee').val()
+                    Spent_Money: $('#txtCoffee').val(),
+                    Expense_Resume: $('#txtCoffeeResume').val()
                 },
                 success: function () {
                     //$('#successModal').modal('show');
@@ -203,7 +211,8 @@
                     ID_Expense: 3,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtMed').val()
+                    Spent_Money: $('#txtMed').val(),
+                    Expense_Resume: $('#txtMedResume').val()
                 },
                 success: function () {
                     //$('#successModal').modal('show');
@@ -224,7 +233,8 @@
                     ID_Expense: 4,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtGas').val()
+                    Spent_Money: $('#txtGas').val(),
+                    Expense_Resume: $('#txtGasResume').val()
                 },
                 success: function () {
                    // $('#successModal').modal('show');
@@ -245,7 +255,8 @@
                     ID_Expense: 5,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtEnter').val()
+                    Spent_Money: $('#txtEnter').val(),
+                    Expense_Resume: $('#txtEnterResume').val()
                 },
                 success: function () {
                     //$('#successModal').modal('show');
@@ -266,7 +277,8 @@
                     ID_Expense: 6,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtClothes').val()
+                    Spent_Money: $('#txtClothes').val(),
+                    Expense_Resume: $('#txtClothesResume').val()
                 },
                 success: function () {
                     

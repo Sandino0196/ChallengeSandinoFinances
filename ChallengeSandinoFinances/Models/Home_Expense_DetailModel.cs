@@ -5,5 +5,6 @@
         public string Description_Home_Expense { get; set; }
         public System.DateTime Date { get; set; }
         public decimal Spent_Money { get; set; }
+        public string Home_Expense_Resume { get; set; }
     }
 }

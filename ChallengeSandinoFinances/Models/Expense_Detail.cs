@@ -19,5 +19,6 @@ namespace ChallengeSandinoFinances.Models
         public string UserName { get; set; }
         public System.DateTime Date { get; set; }
         public decimal Spent_Money { get; set; }
+        public string Expense_Resume { get; set; }
     }
 }

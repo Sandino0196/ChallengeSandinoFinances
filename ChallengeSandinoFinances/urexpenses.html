@@ -33,6 +33,7 @@
                 <thead class="info text-center">
                     <tr>
                         <th>Expenses</th>
+                        <th>Description</th>
                         <th>Date</th>
                         <th>Mount</th>
                     </tr>
@@ -70,10 +71,7 @@
                 }
             });
         });
-        $('#btnExpense').click(function () {
-            var today = new Date();            
-            var date = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-            var actual = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        $('#btnExpense').click(function () {                        
             $('#dataExpenses').empty();
             document.getElementById("titleTable").textContent = "Personal Expenses";
             $.ajax({
@@ -84,6 +82,7 @@
                         $('#dataExpenses').append(
                             '<tr>' +
                                 '<td>' + $(this).find('Description_Expense').text() + '</td>' +
+                                '<td>' + $(this).find('Expense_Resume').text() + '</td>' +
                                 '<td>' + $(this).find('Date').text() + '</td>' +
                                 '<td>' + $(this).find('Spent_Money').text() + '</td>' +
                             '</tr>'
@@ -103,6 +102,7 @@
                         $('#dataExpenses').append(
                             '<tr>' +
                                 '<td>' + $(this).find('Description_Home_Expense').text() + '</td>' +
+                                '<td>' + $(this).find('Home_Expense_Resume').text() + '</td>' +
                                 '<td>' + $(this).find('Date').text() + '</td>' +
                                 '<td>' + $(this).find('Spent_Money').text() + '</td>' +
                             '</tr>'

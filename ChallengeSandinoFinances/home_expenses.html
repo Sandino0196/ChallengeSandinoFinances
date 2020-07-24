@@ -33,6 +33,7 @@
                     <img src="images/food-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtFood" placeholder="Mount" />
+                    <input type="text" id="txtFoodResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     Best food ever
@@ -47,6 +48,7 @@
                     <img src="images/water-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtWater" placeholder="Mount" />
+                    <input type="text" id="txtWaterResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     A daily necesity
@@ -61,6 +63,7 @@
                     <img src="images/energy-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtEnergy" placeholder="Mount" />
+                    <input type="text" id="txtEnergyResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     You can't live without it
@@ -75,6 +78,7 @@
                     <img src="images/internet-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtWeb" placeholder="Mount" />
+                    <input type="text" id="txtWebResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     It's your whole life
@@ -89,6 +93,7 @@
                     <img src="images/television-min.jpeg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtTV" placeholder="Mount" />
+                    <input type="text" id="txtTVResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     This isn't that necessary
@@ -103,6 +108,7 @@
                     <img src="images/phone-min.png" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtPhone" placeholder="Mount" />
+                    <input type="text" id="txtPhoneResume" placeholder="Description (Optional)" />
                 </div>
                 <div class="panel-footer h5">
                     You must have one
@@ -182,7 +188,8 @@
                     ID_Home_Expense: 2,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtWater').val()
+                    Spent_Money: $('#txtWater').val(),
+                    Home_Expense_Resume: $('#txtWaterResume').val()
                 },
                 success: function () {
                     //$('#successModal').modal('show');
@@ -203,7 +210,8 @@
                     ID_Home_Expense: 3,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtEnergy').val()
+                    Spent_Money: $('#txtEnergy').val(),
+                    Home_Expense_Resume: $('#txtEnergyResume').val()
                 },
                 success: function () {
                     //$('#successModal').modal('show');
@@ -224,7 +232,8 @@
                     ID_Home_Expense: 4,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtWeb').val()
+                    Spent_Money: $('#txtWeb').val(),
+                    Home_Expense_Resume: $('#txtWebResume').val()
                 },
                 success: function () {
                     // $('#successModal').modal('show');
@@ -245,7 +254,8 @@
                     ID_Home_Expense: 5,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtTV').val()
+                    Spent_Money: $('#txtTV').val(),
+                    Home_Expense_Resume: $('#txtTVResume').val()
                 },
                 success: function () {
                     //$('#successModal').modal('show');
@@ -266,7 +276,8 @@
                     ID_Home_Expense: 6,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtPhone').val()
+                    Spent_Money: $('#txtPhone').val(),
+                    Home_Expense_Resume: $('#txtPhoneResume').val()
                 },
                 success: function () {
 

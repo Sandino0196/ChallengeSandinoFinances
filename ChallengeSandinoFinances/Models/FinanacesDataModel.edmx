@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FinancesChallengeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FinancesChallengeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Expense_Detail">
           <Key>
             <PropertyRef Name="ID_Expense_Detail" />
@@ -16,6 +16,7 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Spent_Money" Type="money" Nullable="false" />
+          <Property Name="Expense_Resume" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Expenses">
           <Key>
@@ -35,6 +36,7 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Spent_Money" Type="money" Nullable="false" />
+          <Property Name="Home_Expense_Resume" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Home_Expenses">
           <Key>
@@ -49,8 +51,7 @@
           <EntitySet Name="Home_Expense_Detail" EntityType="Self.Home_Expense_Detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Home_Expenses" EntityType="Self.Home_Expenses" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FinancesChallengeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -65,6 +66,7 @@
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Spent_Money" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Expense_Resume" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Expenses">
           <Key>
@@ -84,6 +86,7 @@
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Spent_Money" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Home_Expense_Resume" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Home_Expenses">
           <Key>
@@ -107,6 +110,7 @@
           <EntitySetMapping Name="Expense_Detail">
             <EntityTypeMapping TypeName="FinancesChallengeDBModel.Expense_Detail">
               <MappingFragment StoreEntitySet="Expense_Detail">
+                <ScalarProperty Name="Expense_Resume" ColumnName="Expense_Resume" />
                 <ScalarProperty Name="ID_Expense_Detail" ColumnName="ID_Expense_Detail" />
                 <ScalarProperty Name="ID_Expense" ColumnName="ID_Expense" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -126,6 +130,7 @@
           <EntitySetMapping Name="Home_Expense_Detail">
             <EntityTypeMapping TypeName="FinancesChallengeDBModel.Home_Expense_Detail">
               <MappingFragment StoreEntitySet="Home_Expense_Detail">
+                <ScalarProperty Name="Home_Expense_Resume" ColumnName="Home_Expense_Resume" />
                 <ScalarProperty Name="ID_Home_Expense_Detail" ColumnName="ID_Home_Expense_Detail" />
                 <ScalarProperty Name="ID_Home_Expense" ColumnName="ID_Home_Expense" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />

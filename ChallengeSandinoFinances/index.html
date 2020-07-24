@@ -37,6 +37,7 @@
     <script src="Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            var total = 0;
             var today = new Date();
             var day = today.getDate();
             var month = today.getMonth() + 1;
@@ -46,9 +47,9 @@
             if (localStorage.getItem('accessToken') != null) {
                 document.getElementById("pLogin").textContent = "Logout";
                 document.getElementById("title").textContent = "Welcome Dear " + localStorage.getItem('userName');
-                document.getElementById("subtitle").textContent = "Today is " + dateString;
+                document.getElementById("subtitle").textContent = "Today is " + dateString;                
                 if (date.getDate() == day && (date.getMonth() + 1) == month && date.getFullYear() == year) {
-
+                    
                 }
             } else {
                 document.getElementById("pLogin").textContent = "Login";

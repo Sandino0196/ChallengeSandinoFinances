@@ -22,7 +22,8 @@ namespace ChallengeSandinoFinances.Controllers
             string db = "Data Source=.;Initial Catalog=FinancesChallengeDB;Integrated Security=True";
             SqlConnection conn = new SqlConnection(db);
             string sql = "select [Description_Expense] as 'Expense', [Date] as 'Date', " +
-                "[Spent_Money] as 'Mount' from[dbo].[Expense_Detail] a inner join[dbo].[Expenses] " +
+                "[Spent_Money] as 'Mount', [Expense_Resume] as 'Description' " +
+                "from[dbo].[Expense_Detail] a inner join[dbo].[Expenses] " +
                 "b on a.ID_Expense = b.ID_Expense inner join[dbo].[AspNetUsers] c on " +
                 "c.UserName = a.UserName where a.[UserName] = '" + UserName + "' order by [Date] desc";
             SqlCommand command = new SqlCommand(sql, conn);
