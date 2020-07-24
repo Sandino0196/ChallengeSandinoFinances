@@ -38,7 +38,8 @@ namespace ChallengeSandinoFinances.Controllers
                 {
                     Description_Home_Expense = rd.GetString(rd.GetOrdinal("Expense")),
                     Date = rd.GetDateTime(rd.GetOrdinal("Date")),
-                    Spent_Money = rd.GetDecimal(rd.GetOrdinal("Mount"))
+                    Spent_Money = rd.GetDecimal(rd.GetOrdinal("Mount")),
+                    Home_Expense_Resume = rd.GetString(rd.GetOrdinal("Description"))
                 });
             }
             conn.Close();

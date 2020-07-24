@@ -18,14 +18,20 @@
                     <li class="disabled"><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span>  Sign Up</a></li>
                     <li id="liLogin"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span><p id="pLogin">Login</p></a></li>
                 </ul>
             </div>
         </nav>
+
+        <div style="padding-top:80px">
+            <h1 id="title" class="h1 text-center hidden" >You need to login my friend, sorry :(</h1>
+            <h2 id="subtitle" class="h2 text-center hidden">And if you don't have your account yet, let's sign up :D</h2>
+        </div>
+
         <div class="text-center">
-            <input type="button" class="btn btn-info" id="btnExpense" value="Personal Expenses" />
-            <input type="button" class="btn btn-info" id="btnHomeExpense" value="Home Expenses" />
+            <input type="button" class="btn btn-info hidden" id="btnExpense" value="Personal Expenses" />
+            <input type="button" class="btn btn-info hidden" id="btnHomeExpense" value="Home Expenses" />
         </div>
         <div class="hidden" id="tableContent">
             <p class="h3 text-center text-capitalize" id="titleTable"></p>
@@ -40,7 +46,7 @@
                 </thead>
                 <tbody id="dataExpenses"></tbody>
             </table>
-        </div>        
+        </div>
 
     </div>
     <div id="divError" class="alert alert-danger collapse">
@@ -62,8 +68,12 @@
             if (localStorage.getItem('accessToken') != null) {
                 document.getElementById("pLogin").textContent = "Logout";
                 $('#tableContent').removeClass('hidden');
+                $('#btnExpense').removeClass('hidden');
+                $('#btnHomeExpense').removeClass('hidden');                
             } else {
-                document.getElementById("pLogin").textContent = "Login";
+                $('#title').removeClass('hidden');
+                $('#subtitle').removeClass('hidden');
+                document.getElementById("pLogin").textContent = "Login";                
             }
             $('#liLogin').click(function () {
                 if (localStorage.getItem('userName') != null) {

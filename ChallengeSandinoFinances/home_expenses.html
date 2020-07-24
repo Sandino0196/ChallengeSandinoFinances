@@ -18,11 +18,16 @@
                     <li><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span>  Sign Up</a></li>
                     <li id="liLogin"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span><p id="pLogin">Login</p></a></li>
                 </ul>
             </div>
         </nav>
+
+        <div style="padding-top:80px">
+            <h1 id="title" class="h1 text-center hidden">You need to login my friend, sorry :(</h1>
+            <h2 id="subtitle" class="h2 text-center hidden">And if you don't have your account yet, let's sign up :D</h2>
+        </div>
 
         <div class="row hidden" id="dataHomeExpenses">
             <div class="col-sm-4 panel panel-default text-center">
@@ -147,6 +152,8 @@
                 document.getElementById("pLogin").textContent = "Logout";
                 $('#dataHomeExpenses').removeClass('hidden');
             } else {
+                $('#title').removeClass('hidden');
+                $('#subtitle').removeClass('hidden');
                 document.getElementById("pLogin").textContent = "Login";
             }
             $('#liLogin').click(function () {
