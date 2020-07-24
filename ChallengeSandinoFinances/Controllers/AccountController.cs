@@ -15,11 +15,9 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace ChallengeSandinoFinances.Controllers
 {
-    [EnableCorsAttribute("*", "*", "*")]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController

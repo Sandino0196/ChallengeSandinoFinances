@@ -85,7 +85,7 @@
             $('#dataExpenses').empty();
             document.getElementById("titleTable").textContent = "Personal Expenses";
             $.ajax({
-                url: 'http://localhost:59894/api/expense_detail/getdetail/' + localStorage.getItem('userName'),
+                url: 'api/expense_detail/getdetail/' + localStorage.getItem('userName'),
                 dataType: 'xml',
                 success: function (data) {                                                                
                     $(data).find('Expense_DetailModel').each(function () {                                                    
@@ -105,7 +105,7 @@
             $('#dataExpenses').empty();
             document.getElementById("titleTable").textContent = "Home Expenses";
             $.ajax({
-                url: 'http://localhost:59894/api/home_expense_detail/getdetail/' + localStorage.getItem('userName'),
+                url: 'api/home_expense_detail/getdetail/' + localStorage.getItem('userName'),
                 dataType: 'xml',
                 success: function (data) {
                     $(data).find('Home_Expense_DetailModel').each(function () {

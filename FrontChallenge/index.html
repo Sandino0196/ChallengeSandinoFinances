@@ -15,34 +15,52 @@
                 <ul class="nav navbar-nav">
                     <li><a href="expenses.html"><span class="glyphicon glyphicon-usd"></span>   Expenses</a></li>
                     <li><a href="home_expenses.html"><span class="glyphicon glyphicon-list-alt"></span>   Home Expenses</a></li>
-                    <li><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>
-                    <li class="hidden"><a href="maintenanceMenu.html"><span class="	glyphicon glyphicon-wrench"></span>   Maintenance</a></li>
+                    <li><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span><p id="pLogin">Login</p></a></li>
+                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span>  Sign Up</a></li>
+                    <li id="liLogin"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span><p id="pLogin">Login</p></a></li>
                 </ul>
             </div>
         </nav>
         <div style="padding-top:80px">
-            <h1 class="h1 text-center">WELCOME TO FINANCES 'CHALLENGE'</h1>
+            <h1 class="h1 text-center" id="title">WELCOME TO FINANCES 'CHALLENGE'</h1>
+            <h2 class="h2 text-center" id="subtitle"></h2>
         </div>           
     </div>    
     <footer class="container" style="padding-top:50%;">
         <hr />
-        Copyright Rodrigo Sandino 2020
+        Copyright <span class="glyphicon glyphicon-copyright-mark"></span> Rodrigo Sandino 2020
     </footer>
 
     <script src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            var total = 0;
+            var today = new Date();
+            var day = today.getDate();
+            var month = today.getMonth() + 1;
+            var year = today.getFullYear();
+            var date = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            var dateString = day + '-' + month + '-' + year;
             if (localStorage.getItem('accessToken') != null) {
-                document.getElementById("pLogin").textContent = "Logout";                
+                document.getElementById("pLogin").textContent = "Logout";
+                document.getElementById("title").textContent = "Welcome Dear " + localStorage.getItem('userName');
+                document.getElementById("subtitle").textContent = "Today is " + dateString;                
+                if (date.getDate() == day && (date.getMonth() + 1) == month && date.getFullYear() == year) {
+                    
+                }
             } else {
                 document.getElementById("pLogin").textContent = "Login";
             }
-        });
+            $('#liLogin').click(function () {
+                if (localStorage.getItem('accessToken') != null) {
+                    localStorage.removeItem('accessToken');
+                    localStorage.removeItem('userName');               
+                }
+            });
+        });        
     </script>
 </body>
 </html>

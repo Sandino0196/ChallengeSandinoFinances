@@ -1,17 +1,10 @@
 ﻿using ChallengeSandinoFinances.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace ChallengeSandinoFinances.Controllers
 {
-    //[EnableCorsAttribute("*", "*", "*")]
     //[Authorize]
     public class ExpensesController : ApiController
     {

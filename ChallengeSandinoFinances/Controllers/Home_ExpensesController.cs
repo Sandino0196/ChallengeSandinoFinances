@@ -6,7 +6,6 @@ using System.Web.Http.Cors;
 
 namespace ChallengeSandinoFinances.Controllers
 {
-    //[EnableCorsAttribute("*", "*", "*")]
     //[Authorize]
     public class Home_ExpensesController : ApiController
     {

@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace ChallengeSandinoFinances.Controllers
 {
-    //[EnableCorsAttribute("*", "*", "*")]
     //[Authorize]
     public class Expense_DetailController : ApiController
     {

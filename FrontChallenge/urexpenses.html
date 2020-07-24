@@ -16,35 +16,49 @@
                     <li><a href="expenses.html"><span class="glyphicon glyphicon-usd"></span>   Expenses</a></li>
                     <li><a href="home_expenses.html"><span class="glyphicon glyphicon-list-alt"></span>   Home Expenses</a></li>
                     <li class="disabled"><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>
-                    <li class="hidden"><a href="maintenanceMenu.html"><span class="	glyphicon glyphicon-wrench"></span>   Maintenance</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span><p id="pLogin">Login</p></a></li>
+                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span>  Sign Up</a></li>
+                    <li id="liLogin"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span><p id="pLogin">Login</p></a></li>
                 </ul>
             </div>
         </nav>
-        <div class="text-center">
-            <input type="button" class="btn btn-info" id="btnExpense" value="Personal Expenses" />
-            <input type="button" class="btn btn-info" id="btnHomeExpense" value="Home Expenses" />
-        </div>
-        <p class="h3 text-center text-capitalize" id="titleTable"></p>
-        <table class="table table-bordered well">
-            <thead class="info text-center">
-                <tr>
-                    <th>Expenses</th>
-                    <th>Date</th>
-                    <th>Mount</th>
-                </tr>
-            </thead>
-            <tbody id="dataExpenses"></tbody>
-        </table>
 
+        <div style="padding-top:80px">
+            <h1 id="title" class="h1 text-center hidden" >You need to login my friend, sorry :(</h1>
+            <h2 id="subtitle" class="h2 text-center hidden">And if you don't have your account yet, let's sign up :D</h2>
+        </div>
+
+        <div class="text-center">
+            <input type="button" class="btn btn-info hidden" id="btnExpense" value="Personal Expenses" />
+            <input type="button" class="btn btn-info hidden" id="btnHomeExpense" value="Home Expenses" />
+        </div>
+        <div class="hidden" id="tableContent">
+            <p class="h3 text-center text-capitalize" id="titleTable"></p>
+            <table class="table table-bordered well">
+                <thead class="info text-center">
+                    <tr>
+                        <th>Expenses</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Mount</th>
+                    </tr>
+                </thead>
+                <tbody id="dataExpenses"></tbody>
+            </table>
+        </div>
+
+    </div>
+    <div id="divError" class="alert alert-danger collapse">
+        <a id="linkClose" class="close" href="#">&times;</a>
+        <div id="divErrorText">
+
+        </div>
     </div>
 
     <footer class="container" style="padding-top:50%;">
         <hr />
-        Copyright Rodrigo Sandino 2020
+        Copyright <span class="glyphicon glyphicon-copyright-mark"></span> Rodrigo Sandino 2020
     </footer>
 
     <script src="Scripts/jquery-3.3.1.min.js"></script>
@@ -53,21 +67,32 @@
         $(document).ready(function () {
             if (localStorage.getItem('accessToken') != null) {
                 document.getElementById("pLogin").textContent = "Logout";
+                $('#tableContent').removeClass('hidden');
+                $('#btnExpense').removeClass('hidden');
+                $('#btnHomeExpense').removeClass('hidden');                
             } else {
-                document.getElementById("pLogin").textContent = "Login";
-            }           
+                $('#title').removeClass('hidden');
+                $('#subtitle').removeClass('hidden');
+                document.getElementById("pLogin").textContent = "Login";                
+            }
+            $('#liLogin').click(function () {
+                if (localStorage.getItem('userName') != null) {
+                    localStorage.removeItem('accessToken');
+                }
+            });
         });
-        $('#btnExpense').click(function () {
+        $('#btnExpense').click(function () {                        
             $('#dataExpenses').empty();
             document.getElementById("titleTable").textContent = "Personal Expenses";
             $.ajax({
-                url: 'http://localhost:59894/api/expense_detail/getdetail',
+                url: 'https://challengesandinofinances.azurewebsites.net/api/expense_detail/getdetail/' + localStorage.getItem('userName'),
                 dataType: 'xml',
-                success: function (data) {
-                    $(data).find('Expense_DetailModel').each(function () {
+                success: function (data) {                                                                
+                    $(data).find('Expense_DetailModel').each(function () {                                                    
                         $('#dataExpenses').append(
                             '<tr>' +
                                 '<td>' + $(this).find('Description_Expense').text() + '</td>' +
+                                '<td>' + $(this).find('Expense_Resume').text() + '</td>' +
                                 '<td>' + $(this).find('Date').text() + '</td>' +
                                 '<td>' + $(this).find('Spent_Money').text() + '</td>' +
                             '</tr>'
@@ -80,13 +105,14 @@
             $('#dataExpenses').empty();
             document.getElementById("titleTable").textContent = "Home Expenses";
             $.ajax({
-                url: 'http://localhost:59894/api/home_expense_detail/getdetail',
+                url: 'https://challengesandinofinances.azurewebsites.net/api/home_expense_detail/getdetail/' + localStorage.getItem('userName'),
                 dataType: 'xml',
                 success: function (data) {
                     $(data).find('Home_Expense_DetailModel').each(function () {
                         $('#dataExpenses').append(
                             '<tr>' +
                                 '<td>' + $(this).find('Description_Home_Expense').text() + '</td>' +
+                                '<td>' + $(this).find('Home_Expense_Resume').text() + '</td>' +
                                 '<td>' + $(this).find('Date').text() + '</td>' +
                                 '<td>' + $(this).find('Spent_Money').text() + '</td>' +
                             '</tr>'
