@@ -320,7 +320,6 @@
     <Content Include="Models\FinanacesDataModel.edmx.diagram">
       <DependentUpon>FinanacesDataModel.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\ChallengeSandinoFinances - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
