@@ -6,7 +6,6 @@ using System.Web.Http;
 
 namespace ChallengeSandinoFinances.Controllers
 {
-    //[Authorize]
     public class Home_Expense_DetailController : ApiController
     {
         public Home_Expense_DetailController()

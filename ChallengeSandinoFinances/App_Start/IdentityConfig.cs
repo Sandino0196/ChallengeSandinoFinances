@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using ChallengeSandinoFinances.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using ChallengeSandinoFinances.Models;
 
 namespace ChallengeSandinoFinances
 {
