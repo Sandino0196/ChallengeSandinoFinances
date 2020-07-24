@@ -38,7 +38,7 @@
                     <img src="images/Fast_Food-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtFood" placeholder="Mount" />
-                    <input type="text" id="txtFoodResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtFoodResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     Don't abuse of this
@@ -53,7 +53,7 @@
                     <img src="images/Coffee-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtCoffee" placeholder="Mount" />
-                    <input type="text" id="txtCoffeeResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtCoffeeResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     Perfect for your day
@@ -68,7 +68,7 @@
                     <img src="images/Medicine-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtMed" placeholder="Mount" />
-                    <input type="text" id="txtMedResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtMedResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     I hope don't use this so much
@@ -83,7 +83,7 @@
                     <img src="images/Gas-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtGas" placeholder="Mount" />
-                    <input type="text" id="txtGasResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtGasResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     Your car needs food too
@@ -98,7 +98,7 @@
                     <img src="images/Entertainment-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtEnter" placeholder="Mount" />
-                    <input type="text" id="txtEnterResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtEnterResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     Just chill man
@@ -113,7 +113,7 @@
                     <img src="images/Clothes-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtClothes" placeholder="Mount" />
-                    <input type="text" id="txtClothesResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtClothesResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     You gotta need it
@@ -179,9 +179,6 @@
                     Expense_Resume: $('#txtFoodResume').val()
                 },
                 success: function () {
-                    //$('#successModal').modal('show');
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });
@@ -191,7 +188,7 @@
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'api/Expense_Detail',
                 method: 'POST',
                 data: {
                     ID_Expense: 2,
@@ -201,9 +198,6 @@
                     Expense_Resume: $('#txtCoffeeResume').val()
                 },
                 success: function () {
-                    //$('#successModal').modal('show');
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });
@@ -213,7 +207,7 @@
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'api/Expense_Detail',
                 method: 'POST',
                 data: {
                     ID_Expense: 3,
@@ -223,9 +217,6 @@
                     Expense_Resume: $('#txtMedResume').val()
                 },
                 success: function () {
-                    //$('#successModal').modal('show');
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });
@@ -235,7 +226,7 @@
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'api/Expense_Detail',
                 method: 'POST',
                 data: {
                     ID_Expense: 4,
@@ -245,10 +236,7 @@
                     Expense_Resume: $('#txtGasResume').val()
                 },
                 success: function () {
-                   // $('#successModal').modal('show');
-                },
-                error: function () {
-                    $('#successModal').modal('show');
+                   $('#successModal').modal('show');
                 }
             });
         });
@@ -257,7 +245,7 @@
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'api/Expense_Detail',
                 method: 'POST',
                 data: {
                     ID_Expense: 5,
@@ -267,9 +255,6 @@
                     Expense_Resume: $('#txtEnterResume').val()
                 },
                 success: function () {
-                    //$('#successModal').modal('show');
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });
@@ -279,7 +264,7 @@
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expense_Detail',
+                url: 'api/Expense_Detail',
                 method: 'POST',
                 data: {
                     ID_Expense: 6,
@@ -289,9 +274,6 @@
                     Expense_Resume: $('#txtClothesResume').val()
                 },
                 success: function () {
-                    
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });

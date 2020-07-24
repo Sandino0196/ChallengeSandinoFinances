@@ -37,12 +37,12 @@
                 <div class="panel-body">
                     <img src="images/food-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
-                    <input type="number" id="txtFood" placeholder="Mount" />
-                    <input type="text" id="txtFoodResume" placeholder="Description (Optional)" />
+                    <input type="number" id="txtHomeFood" placeholder="Mount" />
+                    <input type="text" id="txtHomeFoodResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     Best food ever
-                    <input type="button" value="Confirm" id="btnFood" class="btn btn-info" />
+                    <input type="button" value="Confirm" id="btnHomeFood" class="btn btn-info" />
                 </div>
             </div>
             <div class="col-sm-4 panel panel-default text-center">
@@ -53,7 +53,7 @@
                     <img src="images/water-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtWater" placeholder="Mount" />
-                    <input type="text" id="txtWaterResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtWaterResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     A daily necesity
@@ -68,7 +68,7 @@
                     <img src="images/energy-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtEnergy" placeholder="Mount" />
-                    <input type="text" id="txtEnergyResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtEnergyResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     You can't live without it
@@ -83,7 +83,7 @@
                     <img src="images/internet-min.jpg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtWeb" placeholder="Mount" />
-                    <input type="text" id="txtWebResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtWebResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     It's your whole life
@@ -98,7 +98,7 @@
                     <img src="images/television-min.jpeg" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtTV" placeholder="Mount" />
-                    <input type="text" id="txtTVResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtTVResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     This isn't that necessary
@@ -113,7 +113,7 @@
                     <img src="images/phone-min.png" class="img-responsive" style="height:200px;" />
                     <br />
                     <input type="number" id="txtPhone" placeholder="Mount" />
-                    <input type="text" id="txtPhoneResume" placeholder="Description (Optional)" />
+                    <input type="text" id="txtPhoneResume" placeholder="Description" />
                 </div>
                 <div class="panel-footer h5">
                     You must have one
@@ -164,7 +164,7 @@
         });
     </script>
     <script type="text/javascript">
-        $('#btnFood').click(function () {
+        $('#btnHomeFood').click(function () {
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
@@ -174,12 +174,10 @@
                     ID_Home_Expense: 1,
                     UserName: localStorage.getItem('userName'),
                     Date: date,
-                    Spent_Money: $('#txtFood').val()
+                    Spent_Money: $('#txtHomeFood').val(),
+                    Home_Expense_Resume: $('#txtHomeFoodResume').val()
                 },
                 success: function () {
-                    //$('#successModal').modal('show');
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });
@@ -199,9 +197,6 @@
                     Home_Expense_Resume: $('#txtWaterResume').val()
                 },
                 success: function () {
-                    //$('#successModal').modal('show');
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });
@@ -221,9 +216,6 @@
                     Home_Expense_Resume: $('#txtEnergyResume').val()
                 },
                 success: function () {
-                    //$('#successModal').modal('show');
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });
@@ -233,7 +225,7 @@
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Home_Expense_Detail',
+                url: 'api/Home_Expense_Detail',
                 method: 'POST',
                 data: {
                     ID_Home_Expense: 4,
@@ -243,9 +235,6 @@
                     Home_Expense_Resume: $('#txtWebResume').val()
                 },
                 success: function () {
-                    // $('#successModal').modal('show');
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });
@@ -255,7 +244,7 @@
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Home_Expense_Detail',
+                url: 'api/Home_Expense_Detail',
                 method: 'POST',
                 data: {
                     ID_Home_Expense: 5,
@@ -265,9 +254,6 @@
                     Home_Expense_Resume: $('#txtTVResume').val()
                 },
                 success: function () {
-                    //$('#successModal').modal('show');
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });
@@ -277,7 +263,7 @@
             var today = new Date();
             var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Home_Expense_Detail',
+                url: 'api/Home_Expense_Detail',
                 method: 'POST',
                 data: {
                     ID_Home_Expense: 6,
@@ -287,9 +273,6 @@
                     Home_Expense_Resume: $('#txtPhoneResume').val()
                 },
                 success: function () {
-
-                },
-                error: function () {
                     $('#successModal').modal('show');
                 }
             });

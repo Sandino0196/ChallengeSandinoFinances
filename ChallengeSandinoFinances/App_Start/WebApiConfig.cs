@@ -1,6 +1,5 @@
 ﻿using Microsoft.Owin.Security.OAuth;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace ChallengeSandinoFinances
 {
@@ -21,8 +20,6 @@ namespace ChallengeSandinoFinances
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            var cors = new EnableCorsAttribute("http://localhost:61399/", "*", "*");
-            config.EnableCors(cors);
         }
     }
 }

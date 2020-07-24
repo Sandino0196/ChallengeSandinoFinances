@@ -17,7 +17,7 @@ namespace ChallengeSandinoFinances.Controllers
         [Route("api/Expense_Detail/GetDetail/{UserName}")]
         public IEnumerable<Expense_DetailModel> GetDetail(string UserName)
         {
-            string db = "Data Source=.;Initial Catalog=FinancesChallengeDB;Integrated Security=True";
+            string db = "Data Source=sandino.database.windows.net;Initial Catalog=FinancesChallengeDB;Persist Security Info=True;User ID=sandino96;Password=Neggo.69";
             SqlConnection conn = new SqlConnection(db);
             string sql = "select [Description_Expense] as 'Expense', [Date] as 'Date', " +
                 "[Spent_Money] as 'Mount', [Expense_Resume] as 'Description' " +
