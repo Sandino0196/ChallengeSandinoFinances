@@ -25,6 +25,90 @@
         </nav>
 
         <div class="row hidden" id="dataHomeExpenses">
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Food
+                </div>
+                <div class="panel-body">
+                    <img src="images/food-min.jpg" class="img-responsive" style="height:200px;"/>                    
+                    <br />
+                    <input type="number" id="txtFood" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    Best food ever
+                    <input type="button" value="Confirm" id="btnFood" class="btn btn-info" />
+                </div>
+            </div>
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Water
+                </div>
+                <div class="panel-body">
+                    <img src="images/water-min.jpg" class="img-responsive" style="height:200px;"/>                    
+                    <br />
+                    <input type="number" id="txtWater" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    A daily necesity
+                    <input type="button" value="Confirm" id="btnWater" class="btn btn-info" />
+                </div>
+            </div>
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Power Energy
+                </div>
+                <div class="panel-body">
+                    <img src="images/energy-min.jpg" class="img-responsive" style="height:200px;"/>                    
+                    <br />
+                    <input type="number" id="txtMedicine" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    You can't live without it
+                    <input type="button" value="Confirm" id="btnMed" class="btn btn-info" />
+                </div>
+            </div>
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Internet
+                </div>
+                <div class="panel-body">
+                    <img src="images/internet-min.jpg" class="img-responsive" style="height:200px;"/>                    
+                    <br />
+                    <input type="number" id="txtGas" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    It's your whole life
+                    <input type="button" value="Confirm" id="btnGas" class="btn btn-info" />
+                </div>
+            </div>
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    TV Cable
+                </div>
+                <div class="panel-body">
+                    <img src="images/television-min.jpeg" class="img-responsive" style="height:200px;"/>                    
+                    <br />
+                    <input type="number" id="txtGas" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    This isn't that necessary
+                    <input type="button" value="Confirm" id="btnGas" class="btn btn-info" />
+                </div>
+            </div>
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Phone
+                </div>
+                <div class="panel-body">
+                    <img src="images/phone-min.png" class="img-responsive" style="height:200px;"/>                    
+                    <br />
+                    <input type="number" id="txtGas" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    You must have one
+                    <input type="button" value="Confirm" id="btnGas" class="btn btn-info" />
+                </div>
+            </div>
         </div>
     </div>
     <footer class="container" style="padding-top:50%;">
@@ -47,22 +131,131 @@
                     localStorage.removeItem('accessToken');                    
                 }
             });
+        });
+    </script>
+    <script type="text/javascript">
+        $('#btnFood').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Home_Expenses',
-                dataType: 'xml',
-                success: function (data) {
-                    $(data).find('Home_Expenses').each(function () {
-                        $('#dataHomeExpenses').append(
-                            '<div class="col-sm-4 panel panel-default text-center">' +
-                                '<div class="panel-heading">' +
-                                    $(this).find('Description_Home_Expense').text() +
-                                '</div>' +
-                                '<div class="panel-body">' +
-                                    '<input type="text" id="txtHomeExpense' + $(this).find('ID_Home_Expense').text() + '" placeholder="Anything you want" />' +
-                                '</div>' +
-                            '</div>'
-                        );
-                    });
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 1,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtFood').val()
+                },
+                success: function () {
+                    //$('#successModal').modal('show');
+                },
+                error: function () {
+                    $('#successModal').modal('show');
+                }
+            });
+        });
+
+        $('#btnWater').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            $.ajax({
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 2,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtWater').val()
+                },
+                success: function () {
+                    //$('#successModal').modal('show');
+                },
+                error: function () {
+                    $('#successModal').modal('show');
+                }
+            });
+        });
+
+        $('#btnMed').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            $.ajax({
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 3,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtMed').val()
+                },
+                success: function () {
+                    //$('#successModal').modal('show');
+                },
+                error: function () {
+                    $('#successModal').modal('show');
+                }
+            });
+        });
+
+        $('#btnGas').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            $.ajax({
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 4,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtGas').val()
+                },
+                success: function () {
+                    // $('#successModal').modal('show');
+                },
+                error: function () {
+                    $('#successModal').modal('show');
+                }
+            });
+        });
+
+        $('#btnEnter').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            $.ajax({
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 5,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtEnter').val()
+                },
+                success: function () {
+                    //$('#successModal').modal('show');
+                },
+                error: function () {
+                    $('#successModal').modal('show');
+                }
+            });
+        });
+
+        $('#btnClothes').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            $.ajax({
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 6,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtClothes').val()
+                },
+                success: function () {
+
+                },
+                error: function () {
+                    $('#successModal').modal('show');
                 }
             });
         });

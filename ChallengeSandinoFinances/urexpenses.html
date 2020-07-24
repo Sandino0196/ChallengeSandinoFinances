@@ -15,7 +15,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="expenses.html"><span class="glyphicon glyphicon-usd"></span>   Expenses</a></li>
                     <li><a href="home_expenses.html"><span class="glyphicon glyphicon-list-alt"></span>   Home Expenses</a></li>
-                    <li class="disabled"><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>                    
+                    <li class="disabled"><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
@@ -40,6 +40,12 @@
         </table>
 
     </div>
+    <div id="divError" class="alert alert-danger collapse">
+        <a id="linkClose" class="close" href="#">&times;</a>
+        <div id="divErrorText">
+
+        </div>
+    </div>
 
     <footer class="container" style="padding-top:50%;">
         <hr />
@@ -57,23 +63,26 @@
             }
             $('#liLogin').click(function () {
                 if (localStorage.getItem('userName') != null) {
-                    localStorage.removeItem('accessToken');                    
+                    localStorage.removeItem('accessToken');
                 }
             });
         });
         $('#btnExpense').click(function () {
+            var today = new Date();            
+            var date = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            var actual = new Date(today.getFullYear(), today.getMonth(), today.getDate());
             $('#dataExpenses').empty();
             document.getElementById("titleTable").textContent = "Personal Expenses";
             $.ajax({
-                url: 'http://localhost:59894/api/expense_detail/getdetail' + localStorage.getItem('userName'),
+                url: 'http://localhost:59894/api/expense_detail/getdetail/' + localStorage.getItem('userName'),
                 dataType: 'xml',
-                success: function (data) {
-                    $(data).find('Expense_DetailModel').each(function () {
+                success: function (data) {                                                                
+                    $(data).find('Expense_DetailModel').each(function () {                                                    
                         $('#dataExpenses').append(
                             '<tr>' +
-                                '<td>' + $(this).find('Description_Expense').text() + '</td>' +
-                                '<td>' + $(this).find('Date').text() + '</td>' +
-                                '<td>' + $(this).find('Spent_Money').text() + '</td>' +
+                            '<td>' + $(this).find('Description_Expense').text() + '</td>' +
+                            '<td>' + $(this).find('Date').text() + '</td>' +
+                            '<td>' + $(this).find('Spent_Money').text() + '</td>' +
                             '</tr>'
                         );
                     });
@@ -90,9 +99,9 @@
                     $(data).find('Home_Expense_DetailModel').each(function () {
                         $('#dataExpenses').append(
                             '<tr>' +
-                                '<td>' + $(this).find('Description_Home_Expense').text() + '</td>' +
-                                '<td>' + $(this).find('Date').text() + '</td>' +
-                                '<td>' + $(this).find('Spent_Money').text() + '</td>' +
+                            '<td>' + $(this).find('Description_Home_Expense').text() + '</td>' +
+                            '<td>' + $(this).find('Date').text() + '</td>' +
+                            '<td>' + $(this).find('Spent_Money').text() + '</td>' +
                             '</tr>'
                         );
                     });

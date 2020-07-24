@@ -25,7 +25,7 @@ namespace ChallengeSandinoFinances.Controllers
             string sql = "select [Description_Home_Expense] as 'Expense', [Date] as 'Date', " +
                 "[Spent_Money] as 'Mount' from[dbo].[Home_Expense_Detail] a inner join[dbo].[Home_Expenses] " +
                 "b on a.ID_Home_Expense = b.ID_Home_Expense inner join[dbo].[AspNetUsers] c on " +
-                "c.Id = a.ID_User where [UserName] = '"+UserName+"'";
+                "c.UserName = a.UserName where a.[UserName] = '" + UserName+ "' order by [Date] desc";
             SqlCommand command = new SqlCommand(sql, conn);
             conn.Open();
             List<Home_Expense_DetailModel> list = new List<Home_Expense_DetailModel>();

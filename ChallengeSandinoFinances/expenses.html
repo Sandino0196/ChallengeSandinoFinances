@@ -15,17 +15,119 @@
                 <ul class="nav navbar-nav">
                     <li class="disabled"><a href="expenses.html"><span class="glyphicon glyphicon-usd"></span>  Expenses</a></li>
                     <li><a href="home_expenses.html"><span class="	glyphicon glyphicon-list-alt"></span>   Home Expenses</a></li>
-                    <li><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>                    
+                    <li><a href="urexpenses.html"><span class="	glyphicon glyphicon-list"></span>   Your Expenses</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span><p id="pLogin">Login</p></a></li>
                 </ul>
             </div>
-        </nav>        
+        </nav>
         <div class="row hidden" id="dataExpenses">
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Fast Food
+                </div>
+                <div class="panel-body">
+                    <img src="images/Fast_Food-min.jpg" class="img-responsive" style="height:200px;" />
+                    <br />
+                    <input type="number" id="txtFood" placeholder="Mount"/>
+                </div>
+                <div class="panel-footer h5">
+                    Don't abuse of this
+                    <input type="button" value="Confirm" id="btnFood" class="btn btn-info"/>
+                </div>
+            </div>
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Coffee
+                </div>
+                <div class="panel-body">
+                    <img src="images/Coffee-min.jpg" class="img-responsive" style="height:200px;" />
+                    <br />
+                    <input type="number" id="txtCoffee" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    Perfect for your day
+                    <input type="button" value="Confirm" id="btnCoffee" class="btn btn-info" />
+                </div>
+            </div>
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Medicine
+                </div>
+                <div class="panel-body">
+                    <img src="images/Medicine-min.jpg" class="img-responsive" style="height:200px;" />
+                    <br />
+                    <input type="number" id="txtMedicine" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    I hope don't use this so much
+                    <input type="button" value="Confirm" id="btnMed" class="btn btn-info" />
+                </div>
+            </div>
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Gas
+                </div>
+                <div class="panel-body">
+                    <img src="images/Gas-min.jpg" class="img-responsive" style="height:200px;" />
+                    <br />
+                    <input type="number" id="txtGas" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    Your car needs food too
+                    <input type="button" value="Confirm" id="btnGas" class="btn btn-info" />
+                </div>
+            </div>
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Entertainment
+                </div>
+                <div class="panel-body">
+                    <img src="images/Entertainment-min.jpg" class="img-responsive" style="height:200px;" />
+                    <br />
+                    <input type="number" id="txtEnter" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    Just chill man
+                    <input type="button" value="Confirm" id="btnEnter" class="btn btn-info" />
+                </div>
+            </div>
+            <div class="col-sm-4 panel panel-default text-center">
+                <div class="panel-heading">
+                    Clothes
+                </div>
+                <div class="panel-body">
+                    <img src="images/Clothes-min.jpg" class="img-responsive" style="height:200px;" />
+                    <br />
+                    <input type="number" id="txtClothes" placeholder="Mount" />
+                </div>
+                <div class="panel-footer h5">
+                    You gotta need it
+                    <input type="button" value="Confirm" id="btnClothes" class="btn btn-info" />
+                </div>
+            </div>
+        </div> 
+        
+        <div class="modal fade" tabindex="-1" id="successModal" data-keyboard="false"
+             data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header h4">
+                        Success
+                    </div>
+                    <div class="modal-body h1">
+                        You added your expense (calm down)
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="button" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
     <footer class="container" style="padding-top:50%;">
         <hr />
         Copyright Rodrigo Sandino 2020
@@ -33,7 +135,7 @@
 
     <script src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript">        
         $(document).ready(function () {
             if (localStorage.getItem('accessToken') != null) {
                 document.getElementById("pLogin").textContent = "Logout";
@@ -45,23 +147,132 @@
                 if (localStorage.getItem('accessToken') != null) {
                     localStorage.removeItem('accessToken');                
                 }
-            });
+            });                  
+        });
+    </script>
+    <script type="text/javascript">
+        $('#btnFood').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
             $.ajax({
-                url: 'http://localhost:59894/api/Expenses',
-                dataType: 'xml',                
-                success: function (data) {
-                   $(data).find('Expenses').each(function () {
-                        $('#dataExpenses').append(
-                            '<div class="col-sm-4 panel panel-default text-center">' +
-                                '<div class="panel-heading">' +
-                                    $(this).find('Description_Expense').text() +
-                                '</div>' +
-                                '<div class="panel-body">' +
-                                    '<input type="text" id="txtExpense' + $(this).find('ID_Expense').text() + '" placeholder="Anything you want" />' +
-                                '</div>' +
-                            '</div>'
-                        );
-                    });
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 1,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtFood').val()
+                },
+                success: function () {
+                    //$('#successModal').modal('show');
+                },
+                error: function () {
+                    $('#successModal').modal('show');
+                }
+            });
+        });
+
+        $('#btnCoffee').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            $.ajax({
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 2,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtCoffee').val()
+                },
+                success: function () {
+                    //$('#successModal').modal('show');
+                },
+                error: function () {
+                    $('#successModal').modal('show');
+                }
+            });
+        });
+
+        $('#btnMed').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            $.ajax({
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 3,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtMed').val()
+                },
+                success: function () {
+                    //$('#successModal').modal('show');
+                },
+                error: function () {
+                    $('#successModal').modal('show');
+                }
+            });
+        });
+
+        $('#btnGas').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            $.ajax({
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 4,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtGas').val()
+                },
+                success: function () {
+                   // $('#successModal').modal('show');
+                },
+                error: function () {
+                    $('#successModal').modal('show');
+                }
+            });
+        });
+
+        $('#btnEnter').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            $.ajax({
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 5,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtEnter').val()
+                },
+                success: function () {
+                    //$('#successModal').modal('show');
+                },
+                error: function () {
+                    $('#successModal').modal('show');
+                }
+            });
+        });
+
+        $('#btnClothes').click(function () {
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            $.ajax({
+                url: 'http://localhost:59894/api/Expense_Detail',
+                method: 'POST',
+                data: {
+                    ID_Expense: 6,
+                    UserName: localStorage.getItem('userName'),
+                    Date: date,
+                    Spent_Money: $('#txtClothes').val()
+                },
+                success: function () {
+                    
+                },
+                error: function () {
+                    $('#successModal').modal('show');
                 }
             });
         });
