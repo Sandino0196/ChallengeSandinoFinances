@@ -43,6 +43,21 @@ namespace ChallengeSandinoFinances.Controllers
             return list;
         }
 
+        [HttpGet]
+        [Route("api/Expense_Detail/GetMax")]
+        public decimal GetMax()
+        {
+            decimal total = 0;
+            using (FinancesChallengeDBEntities entities = new FinancesChallengeDBEntities())
+            {
+                foreach (var e in entities.Expense_Detail.ToList())
+                {
+                    total += e.Spent_Money;
+                }
+            }
+            return total;
+        }
+
         // GET: api/Expense_Detail
         public IEnumerable<Expense_Detail> Get()
         {
